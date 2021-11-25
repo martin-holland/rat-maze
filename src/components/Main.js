@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import Row from "./Row";
 import generateMaze from "./generateMaze";
 
+const { solveMaze } = require("./solution");
+
 class EmptyMaze extends Component {
   state = {
     columns: 0,
@@ -14,29 +16,39 @@ class EmptyMaze extends Component {
     //   [0, 0, 0, 1, 1],
     // ],
     maze: [],
+    mazeSolution: [],
+    solutionFound: false,
+    maze2: [],
   };
 
   createEmptyMaze(rowNumber) {
     const maze = [];
     for (let j = 0; j < rowNumber; j++) {
       maze.push(
-        <Row cols={this.state.columns} key={j} row={j} maze={this.state.maze} />
+        <Row
+          cols={this.state.maze.length}
+          key={j}
+          row={this.state.maze[j]}
+          maze={this.state.maze}
+        />
       );
     }
     return maze;
   }
-
-  rowNumberHandler = (event) => {
-    this.setState({
-      rows: event.target.value,
-    });
-  };
-
-  columNumberHandler = (event) => {
-    this.setState({
-      columns: event.target.value,
-    });
-  };
+  createSolutionMaze(rowNumber) {
+    const maze2 = [];
+    for (let j = 0; j < rowNumber; j++) {
+      maze2.push(
+        <Row
+          cols={this.state.mazeSolution.length}
+          key={j}
+          row={this.state.mazeSolution[j]}
+          maze={this.state.mazeSolution}
+        />
+      );
+    }
+    return maze2;
+  }
 
   clickHandler = (event) => {
     let n = document.getElementById("maze-size").value;
@@ -46,12 +58,25 @@ class EmptyMaze extends Component {
       [event.target.name]: size,
       columns: n,
       rows: n,
+      maze: size,
+    });
+  };
+
+  solveMaze = () => {
+    let solutionMaze = solveMaze(this.state.maze);
+    if (solutionMaze === "NO PATH FOUND") {
+      alert("No Path found, please generate a new maze");
+    }
+    console.log("The Maze solution is:");
+    console.log(solutionMaze);
+    this.setState({
+      mazeSolution: solutionMaze,
     });
   };
 
   render() {
     return (
-      <div>
+      <div className="main">
         <div className="maze-dimensions">
           <label htmlFor="maze-size">Input desired Maze Size</label>
           <input id="maze-size" name="mazesize" type="text" />
@@ -65,6 +90,14 @@ class EmptyMaze extends Component {
         </div>
         <div className="maze_wrapper">
           {this.createEmptyMaze(this.state.rows)}
+        </div>
+        <div className="solutionmaze">
+          <button id="solvemaze" onClick={this.solveMaze}>
+            Solve Maze
+          </button>
+          <div className="solvedmaze">
+            {this.createSolutionMaze(this.state.rows)}
+          </div>
         </div>
       </div>
     );

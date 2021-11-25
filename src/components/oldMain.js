@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import generateMaze from "./generateMaze";
-import EmptyMaze from "./EmptyMaze";
+import EmptyMaze from "./Main";
 
 class Main extends Component {
   state = {

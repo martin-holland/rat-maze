@@ -1,3 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Poiret+One&display=swap");
+
+body {
+  font-family: "Poiret One", cursive;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -12,26 +18,109 @@
   background-color: var(--bg-color-main);
 }
 
+header {
+  height: 10vh;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+header img {
+  width: 20vw;
+}
+
+header ul li {
+  list-style-type: none;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
 footer {
   background-color: var(--bg-color-main);
 }
 
 .cell {
-  width: 50px;
-  height: 50px;
+  width: 30px;
+  height: 30px;
   background-color: darkblue;
   display: inline-block;
   border: solid 1px yellow;
+}
+
+.maze-dimensions {
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.maze-dimensions input {
+  font-family: "Poiret One", cursive;
+  padding: 0.25rem;
+}
+
+.maze-dimensions button {
+  height: 40px;
+  width: 100px;
 }
 
 .maze_wrapper {
   display: flex;
   justify-content: center;
   width: 100vw;
-  height: 80vh;
+  height: auto;
 }
 
 .row {
   display: flex;
   flex-direction: column;
+}
+
+.cell0 {
+  background-color: red;
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  border: solid 1px yellow;
+}
+
+.cell1 {
+  background-color: green;
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  border: solid 1px yellow;
+}
+
+.solvedmaze {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  height: auto;
+}
+
+.solvedmaze .cell1 {
+  background-color: blue;
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  border: solid 1px yellow;
+}
+
+.solutionmaze {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+}
+
+.solvedmaze button {
+  height: 40px;
+  width: 100px;
 }

@@ -17,6 +17,10 @@ function Header(props) {
             </li>
           </ul>
         </nav>
+        <img
+          alt="logo"
+          src="https://martin-holland.github.io/assets/LogoWhite.svg"
+        ></img>
       </header>
     </div>
   );

@@ -1,7 +1,9 @@
 import React from "react";
 
 const Cell = (props) => {
-  return <div className="cell"></div>;
+  const cellname = "cell";
+  const mazePosition = props.name;
+  return <div className={cellname + mazePosition}></div>;
 };
 
 export default Cell;

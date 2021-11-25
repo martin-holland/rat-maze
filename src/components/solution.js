@@ -6,20 +6,20 @@ const maze = [
   [0, 0, 0, 1, 1],
 ];
 
-function ratInAMaze(maze) {
+function solveMaze(maze) {
   const solution = [];
   for (let i = 0; i < maze.length; i++) {
-    // {1}
+    // {1} Checking Maze Length
     solution[i] = [];
     for (let j = 0; j < maze[i].length; j++) {
       solution[i][j] = 0;
     }
   }
   if (findPath(maze, 0, 0, solution) === true) {
-    // {2}
+    // {2} Checking for base case of maze being 0,0
     return solution;
   }
-  return "NO PATH FOUND"; // {3}
+  return "NO PATH FOUND"; // {3}  If no path found this will be the result
 }
 
 function findPath(maze, x, y, solution) {
@@ -56,4 +56,21 @@ function isSafe(maze, x, y) {
   return false;
 }
 
-console.log(ratInAMaze(maze));
+// console.log(solveMaze(maze));
+
+module.exports = { solveMaze };
+
+let mazeSolution = solveMaze(maze);
+
+console.log(mazeSolution);
+// console.log("Remapping");
+
+// function mazeSolutionRemap(mazeSolution) {
+//   for (let i = 0; i < mazeSolution.length; i++) {
+//     for (let j = 0; j < mazeSolution[j].length; i++) {
+//       if (mazeSolution[i][j] === 1) {
+//         mazeSolution[i][j] = 3;
+//       }
+//     }
+//   }
+// }
