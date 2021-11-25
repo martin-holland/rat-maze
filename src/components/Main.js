@@ -77,6 +77,16 @@ class EmptyMaze extends Component {
   render() {
     return (
       <div className="main">
+        <div className="instructions">
+          <p>
+            First enter a size of the grid, note: the larger the grid, the
+            harder it is to solve!
+          </p>
+          <p>
+            Please note, the maze solution can only move right and down, it
+            cannot go up or left.
+          </p>
+        </div>
         <div className="maze-dimensions">
           <label htmlFor="maze-size">Input desired Maze Size</label>
           <input id="maze-size" name="mazesize" type="text" />
@@ -92,9 +102,7 @@ class EmptyMaze extends Component {
           {this.createEmptyMaze(this.state.rows)}
         </div>
         <div className="solutionmaze">
-          <button id="solvemaze" onClick={this.solveMaze}>
-            Solve Maze
-          </button>
+          <button onClick={this.solveMaze}>Solve Maze</button>
           <div className="solvedmaze">
             {this.createSolutionMaze(this.state.rows)}
           </div>
