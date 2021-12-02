@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Row from "./Row";
 import generateMaze from "./generateMaze";
+import Cell from "./Cell";
 
 const { solveMaze } = require("./solution");
 
@@ -8,13 +9,6 @@ class EmptyMaze extends Component {
   state = {
     columns: 0,
     rows: 0,
-    // maze: [
-    //   [1, 1, 1, 1, 0],
-    //   [0, 0, 0, 1, 1],
-    //   [0, 0, 0, 0, 1],
-    //   [0, 0, 0, 1, 1],
-    //   [0, 0, 0, 1, 1],
-    // ],
     maze: [],
     mazeSolution: [],
     solutionFound: false,
@@ -47,13 +41,21 @@ class EmptyMaze extends Component {
         />
       );
     }
+    if (maze2 === []) {
+      maze2.push("No Path Found");
+    } else if (maze2.length < 3) {
+      maze2.length = 0;
+    }
     return maze2;
   }
 
   clickHandler = (event) => {
     let n = document.getElementById("maze-size").value;
+    if (n <= 0) {
+      n = 1;
+      alert("Please enter a number greater than 0");
+    }
     let size = generateMaze(n);
-    console.log(size);
     this.setState({
       [event.target.name]: size,
       columns: n,
@@ -67,11 +69,16 @@ class EmptyMaze extends Component {
     if (solutionMaze === "NO PATH FOUND") {
       alert("No Path found, please generate a new maze");
     }
-    console.log("The Maze solution is:");
-    console.log(solutionMaze);
     this.setState({
       mazeSolution: solutionMaze,
     });
+  };
+
+  deleteOld = () => {
+    let solutionMaze = document.getElementById("solvedMaze");
+    if (solutionMaze !== null) {
+      solutionMaze.innerHTML = "";
+    }
   };
 
   render() {
@@ -88,12 +95,25 @@ class EmptyMaze extends Component {
           </p>
         </div>
         <div className="maze-dimensions">
-          <label htmlFor="maze-size">Input desired Maze Size</label>
-          <input id="maze-size" name="mazesize" type="text" />
-          <button id="generateMaze" onClick={this.clickHandler}>
-            <p id="mazearea"></p>
-            Generate
-          </button>
+          <div className="inputs">
+            <label htmlFor="maze-size">Input desired Maze Size</label>
+            <input id="maze-size" name="mazesize" type="text" />
+            <button id="generateMaze" onClick={this.clickHandler}>
+              <p id="mazearea"></p>
+              Generate
+            </button>
+          </div>
+          <div className="blockerscontainer">
+            <p>
+              Blocker: <Cell name="0" />
+            </p>
+            <p>
+              Passable Tile: <Cell name="1" />
+            </p>
+            <p>
+              Solution Path: <Cell name="" />
+            </p>
+          </div>
           <div className="maze-description">
             <p className="mazeresult"></p>
           </div>

@@ -11,7 +11,11 @@ body {
 }
 
 :root {
-  --bg-color-main: skyblue;
+  --bg-color-main: #b7e2aa;
+  --cell-passable: #99d865;
+  --cell-blocker: slategray;
+  --cell-solution: green;
+  --bg-color-light: #f4f2f3;
 }
 
 .headerwrapper {
@@ -36,7 +40,16 @@ header ul li {
 }
 
 h1 {
-  font-size: 2rem;
+  font-size: 3rem;
+}
+.main {
+  background-color: lightyellow;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  margin-bottom: 20px;
 }
 
 .instructions {
@@ -46,28 +59,35 @@ h1 {
 }
 
 footer {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
   background-color: var(--bg-color-main);
+  height: 10vh;
 }
 
 .cell {
-  width: 30px;
-  height: 30px;
-  background-color: darkblue;
+  width: 50px;
+  height: 50px;
+  background-color: var(--cell-solution);
   display: inline-block;
-  border: solid 1px yellow;
+  border: solid 1px var(--bg-color-light);
+  border-radius: 5px;
 }
 
 .maze-dimensions {
   padding: 20px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
 .maze-dimensions label,
 input,
-button {
+button,
+p {
   margin: 0 10px;
 }
 
@@ -80,6 +100,21 @@ button {
   font-size: 1rem;
   height: 40px;
   width: 100px;
+}
+
+.blockerscontainer {
+  padding: 10px;
+  display: flex;
+}
+
+.inputs {
+  padding: 10px;
+  display: flex;
+}
+
+#maze-size {
+  text-align: center;
+  font-weight: bold;
 }
 
 .maze_wrapper {
@@ -95,19 +130,21 @@ button {
 }
 
 .cell0 {
-  background-color: red;
-  width: 30px;
-  height: 30px;
+  background-color: var(--cell-blocker);
+  width: 50px;
+  height: 50px;
   display: inline-block;
-  border: solid 1px yellow;
+  border: solid 1px var(--bg-color-main);
+  border-radius: 5px;
 }
 
 .cell1 {
-  background-color: green;
-  width: 30px;
-  height: 30px;
+  background-color: var(--cell-passable);
+  width: 50px;
+  height: 50px;
   display: inline-block;
-  border: solid 1px yellow;
+  border: solid 1px var(--bg-color-main);
+  border-radius: 5px;
 }
 
 .solvedmaze {
@@ -118,11 +155,12 @@ button {
 }
 
 .solvedmaze .cell1 {
-  background-color: blue;
-  width: 30px;
-  height: 30px;
+  background-color: var(--cell-solution);
+  width: 50px;
+  height: 50px;
   display: inline-block;
-  border: solid 1px yellow;
+  border: solid 1px var(--bg-color-main);
+  border-radius: 5px;
 }
 
 .solutionmaze {
@@ -138,4 +176,20 @@ button {
   font-size: 1rem;
   height: 40px;
   width: 100px;
+}
+
+.maze_wrapper .row:first-child .cell1:first-child {
+  background: url("./assets/mouse.svg");
+}
+
+.maze_wrapper .row:last-child .cell1:last-child {
+  background: url("./assets/cheese.svg");
+}
+
+.solutionmaze .row:first-child .cell1:first-child {
+  background: url("./assets/mouse.svg");
+}
+
+.solutionmaze .row:last-child .cell1:last-child {
+  background: url("./assets/cheese.svg");
 }
