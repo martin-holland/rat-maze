@@ -56,3 +56,8 @@ Martin Holland
 
 Github [here](https://github.com/martin-holland)
 https://github.com/martin-holland
+
+### Acknowledgements:
+
+Elena @ https://github.com/ElaFinIta
+For assisting with the components Row and Cell to generate the maze dynamically from an array.
