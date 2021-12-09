@@ -13,7 +13,7 @@ body {
 :root {
   --bg-color-main: #b7e2aa;
   --cell-passable: #99d865;
-  --cell-blocker: slategray;
+  --cell-blocker: #dad7cd;
   --cell-solution: green;
   --bg-color-light: #f4f2f3;
 }
@@ -41,6 +41,16 @@ header ul li {
 
 h1 {
   font-size: 3rem;
+}
+
+button {
+  background-color: black;
+  color: white;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: green;
 }
 .main {
   background-color: lightyellow;
@@ -76,6 +86,15 @@ footer {
   border-radius: 5px;
 }
 
+.cell,
+.cell0,
+.cell1 {
+  margin: 2px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
 .maze-dimensions {
   padding: 20px;
   display: flex;
@@ -105,6 +124,18 @@ p {
 .blockerscontainer {
   padding: 10px;
   display: flex;
+}
+
+.squares {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+}
+
+.squares .cell,
+.squares .cell1,
+.squares .cell0 {
+  margin: 0.5rem;
 }
 
 .inputs {
@@ -192,4 +223,10 @@ p {
 
 .solutionmaze .row:last-child .cell1:last-child {
   background: url("./assets/cheese.svg");
+}
+
+.footer {
+  position: sticky;
+  width: 100vw;
+  bottom: 0;
 }

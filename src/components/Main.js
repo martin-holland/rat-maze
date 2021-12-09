@@ -110,13 +110,13 @@ class EmptyMaze extends Component {
             </button>
           </div>
           <div className="blockerscontainer">
-            <div>
+            <div className="squares">
               Blocker: <Cell name="0" />
             </div>
-            <div>
+            <div className="squares">
               Passable Tile: <Cell name="1" />
             </div>
-            <div>
+            <div className="squares">
               Solution Path: <Cell name="" />
             </div>
           </div>
