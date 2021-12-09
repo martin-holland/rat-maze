@@ -73,6 +73,7 @@ class EmptyMaze extends Component {
     let solutionMaze = solveMaze(this.state.maze);
     if (solutionMaze === "NO PATH FOUND") {
       alert("No Path found, please generate a new maze");
+      window.location.reload();
     }
     this.setState({
       mazeSolution: solutionMaze,
