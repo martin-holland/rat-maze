@@ -15,6 +15,8 @@ class EmptyMaze extends Component {
     maze2: [],
   };
 
+  newArr = [];
+
   createEmptyMaze(rowNumber) {
     const maze = [];
     for (let j = 0; j < rowNumber; j++) {
@@ -50,18 +52,24 @@ class EmptyMaze extends Component {
   }
 
   clickHandler = (event) => {
+    this.setState({
+      mazeSolution: this.newArr,
+    });
     let n = document.getElementById("maze-size").value;
     if (n <= 0) {
       n = 1;
       alert("Please enter a number greater than 0");
     }
     let size = generateMaze(n);
-    this.setState({
-      [event.target.name]: size,
-      columns: n,
-      rows: n,
-      maze: size,
-    });
+    this.setState(
+      {
+        [event.target.name]: size,
+        columns: n,
+        rows: n,
+        maze: size,
+      },
+      console.log(this.state)
+    );
   };
 
   solveMaze = () => {
@@ -104,15 +112,15 @@ class EmptyMaze extends Component {
             </button>
           </div>
           <div className="blockerscontainer">
-            <p>
+            <div>
               Blocker: <Cell name="0" />
-            </p>
-            <p>
+            </div>
+            <div>
               Passable Tile: <Cell name="1" />
-            </p>
-            <p>
+            </div>
+            <div>
               Solution Path: <Cell name="" />
-            </p>
+            </div>
           </div>
           <div className="maze-description">
             <p className="mazeresult"></p>
