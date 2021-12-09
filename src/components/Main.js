@@ -61,15 +61,12 @@ class EmptyMaze extends Component {
       alert("Please enter a number greater than 0");
     }
     let size = generateMaze(n);
-    this.setState(
-      {
-        [event.target.name]: size,
-        columns: n,
-        rows: n,
-        maze: size,
-      },
-      console.log(this.state)
-    );
+    this.setState({
+      [event.target.name]: size,
+      columns: n,
+      rows: n,
+      maze: size,
+    });
   };
 
   solveMaze = () => {
