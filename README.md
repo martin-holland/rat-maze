@@ -50,6 +50,12 @@ Mouse SVG <div>Icon made from <a href="http://www.onlinewebfonts.com/icon">Icon 
 
 Cheese SVG - svgrepo.com
 
+### Links - Used to help understand the logic of solving the maze
+
+https://www.geeksforgeeks.org/rat-in-a-maze-backtracking-2/
+
+https://www.oreilly.com/library/view/learning-javascript-data/9781788623872/0c52cbba-0a6f-4e5c-aead-077358c4307e.xhtml
+
 ## Authors and acknowledgment
 
 Martin Holland
